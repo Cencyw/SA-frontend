@@ -1,0 +1,218 @@
+import type { Product } from "./types"
+
+export const products: Product[] = [
+  {
+    id: "1",
+    name: "高级智能手表",
+    description:
+      "这款智能手表配备了先进的健康监测功能，包括心率监测、血氧监测和睡眠追踪。它还具有防水功能，可以在游泳时佩戴。",
+    price: 1299,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "TechWear",
+    category: "电子产品",
+    stock: 15,
+    comments: [
+      {
+        id: "c1",
+        user: {
+          id: "u1",
+          name: "李明",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 5,
+        content: "非常好用的智能手表，电池续航超出我的预期，健康监测功能也很准确。",
+        date: "2023-10-15",
+        images: ["/placeholder.svg?height=100&width=100", "/placeholder.svg?height=100&width=100"],
+      },
+      {
+        id: "c2",
+        user: {
+          id: "u2",
+          name: "张华",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 4,
+        content: "整体不错，但是表带有点硬，需要一段时间适应。",
+        date: "2023-09-28",
+      },
+    ],
+  },
+  {
+    id: "2",
+    name: "专业摄影相机",
+    description: "这款专业级数码相机配备了高分辨率传感器和先进的图像处理技术，适合专业摄影师和摄影爱好者使用。",
+    price: 5999,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "PhotoPro",
+    category: "摄影器材",
+    stock: 8,
+    comments: [
+      {
+        id: "c3",
+        user: {
+          id: "u3",
+          name: "王强",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 5,
+        content: "画质非常惊艳，对焦速度快，操作也很顺手。作为一个专业摄影师，我非常满意这款相机。",
+        date: "2023-10-10",
+        images: [
+          "/placeholder.svg?height=100&width=100",
+          "/placeholder.svg?height=100&width=100",
+          "/placeholder.svg?height=100&width=100",
+        ],
+      },
+    ],
+  },
+  {
+    id: "3",
+    name: "无线蓝牙耳机",
+    description: "这款无线蓝牙耳机采用了最新的降噪技术，提供出色的音质和舒适的佩戴体验。",
+    price: 799,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "AudioTech",
+    category: "音频设备",
+    stock: 25,
+    comments: [
+      {
+        id: "c4",
+        user: {
+          id: "u4",
+          name: "赵丽",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 4,
+        content: "音质很好，降噪效果也不错，但是电池续航可以再提高一些。",
+        date: "2023-10-05",
+      },
+      {
+        id: "c5",
+        user: {
+          id: "u5",
+          name: "陈明",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 3,
+        content: "佩戴舒适度一般，长时间佩戴会有些不适。",
+        date: "2023-09-20",
+      },
+    ],
+  },
+  {
+    id: "4",
+    name: "超薄笔记本电脑",
+    description: "这款超薄笔记本电脑重量轻，性能强大，是商务人士和学生的理想选择。",
+    price: 6499,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "TechBook",
+    category: "电脑",
+    stock: 12,
+    comments: [
+      {
+        id: "c6",
+        user: {
+          id: "u6",
+          name: "林小",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 5,
+        content: "非常轻薄，性能也很强大，电池续航时间长，是我用过的最好的笔记本电脑。",
+        date: "2023-10-12",
+      },
+    ],
+  },
+  {
+    id: "5",
+    name: "智能家居套装",
+    description: "这套智能家居系统包括智能灯泡、智能插座和智能音箱，可以通过手机应用或语音控制。",
+    price: 1999,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "SmartHome",
+    category: "智能家居",
+    stock: 18,
+    comments: [
+      {
+        id: "c7",
+        user: {
+          id: "u7",
+          name: "黄晓",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 4,
+        content: "安装简单，使用方便，大大提高了生活质量。但是有时候语音识别不太准确。",
+        date: "2023-09-30",
+      },
+    ],
+  },
+  {
+    id: "6",
+    name: "高清游戏显示器",
+    description: "这款游戏显示器拥有高刷新率和低响应时间，为游戏玩家提供流畅的游戏体验。",
+    price: 2499,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "GameView",
+    category: "电子产品",
+    stock: 10,
+    comments: [
+      {
+        id: "c8",
+        user: {
+          id: "u8",
+          name: "刘强",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 5,
+        content: "画面非常流畅，色彩表现也很好，玩游戏时完全没有拖影现象。",
+        date: "2023-10-08",
+        images: ["/placeholder.svg?height=100&width=100"],
+      },
+    ],
+  },
+  {
+    id: "7",
+    name: "便携式蓝牙音箱",
+    description: "这款便携式蓝牙音箱体积小巧，音质出色，防水设计让你可以在任何地方享受音乐。",
+    price: 399,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "SoundBox",
+    category: "音频设备",
+    stock: 30,
+    comments: [
+      {
+        id: "c9",
+        user: {
+          id: "u9",
+          name: "张小",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 4,
+        content: "音质不错，电池续航也很好，但是高音部分表现一般。",
+        date: "2023-09-25",
+      },
+    ],
+  },
+  {
+    id: "8",
+    name: "智能空气净化器",
+    description: "这款智能空气净化器可以有效去除空气中的污染物和过敏原，为你创造健康的室内环境。",
+    price: 1599,
+    image: "/placeholder.svg?height=400&width=400",
+    brand: "CleanAir",
+    category: "家用电器",
+    stock: 15,
+    comments: [
+      {
+        id: "c10",
+        user: {
+          id: "u10",
+          name: "李华",
+          avatar: "/placeholder.svg?height=50&width=50",
+        },
+        rating: 5,
+        content: "净化效果很好，噪音小，智能控制也很方便。",
+        date: "2023-10-01",
+      },
+    ],
+  },
+]

@@ -4,10 +4,18 @@ import { logInfo, logWarning, logError } from "./debug-utils"
 // API基础URL
 const API_BASE_URL = "http://localhost:9090/api"
 
-// 获取所有产品列表
-export async function fetchProducts() {
-  const url = `${API_BASE_URL}/product/all/products`
-  logInfo(`开始从API获取产品列表`, { url })
+// 分页结果接口
+export interface PageResult<T> {
+  total: number
+  page: number
+  size: number
+  items: T[]
+}
+
+// 获取分页产品列表
+export async function fetchProducts(page = 1, size = 8): Promise<PageResult<Product>> {
+  const url = `${API_BASE_URL}/product/products/page/${page}/size/${size}`
+  logInfo(`开始从API获取产品列表`, { url, page, size })
 
   try {
     logInfo(`发送请求: GET ${url}`)
@@ -31,35 +39,43 @@ export async function fetchProducts() {
 
     const data = await response.json()
     logInfo(`成功解析响应数据`, {
-      productCount: Array.isArray(data) ? data.length : "未知(非数组)",
-      sampleData: Array.isArray(data) && data.length > 0 ? data[0] : data,
+      total: data.total,
+      page: data.page,
+      size: data.size,
+      itemCount: Array.isArray(data.items) ? data.items.length : "未知(非数组)",
+      sampleData: Array.isArray(data.items) && data.items.length > 0 ? data.items[0] : data,
     })
 
     // 验证数据结构
-    if (!Array.isArray(data)) {
-      logWarning(`API返回的数据不是数组`, { data })
-      return []
+    if (!data.items || !Array.isArray(data.items)) {
+      logWarning(`API返回的数据不包含有效的items数组`, { data })
+      return {
+        total: 0,
+        page: page,
+        size: size,
+        items: [],
+      }
     }
 
     // 检查数据格式
-    if (data.length > 0) {
-      const firstItem = data[0]
+    if (data.items.length > 0) {
+      const firstItem = data.items[0]
       if (!firstItem.id || !firstItem.name || typeof firstItem.price !== "number") {
         logWarning(`API返回的数据格式可能不符合预期`, { sampleItem: firstItem })
       }
     }
 
-    return data as Product[]
+    return data as PageResult<Product>
   } catch (error) {
     logError(`获取产品列表失败`, {
       url,
       error:
-        error instanceof Error
-          ? {
-              message: error.message,
-              stack: error.stack,
-            }
-          : error,
+          error instanceof Error
+              ? {
+                message: error.message,
+                stack: error.stack,
+              }
+              : error,
     })
     throw error
   }
@@ -108,19 +124,19 @@ export async function fetchProductReviews(productId: string) {
       url,
       productId,
       error:
-        error instanceof Error
-          ? {
-              message: error.message,
-              stack: error.stack,
-            }
-          : error,
+          error instanceof Error
+              ? {
+                message: error.message,
+                stack: error.stack,
+              }
+              : error,
     })
     throw error
   }
 }
 
 // 获取单个产品详情（从已加载的产品列表中）
-export async function fetchProductById(id: string, products: Product[]) {
+export async function fetchProductById(id: string, products: Product[]): Promise<Product> {
   logInfo(`从本地产品列表中查找产品`, { id, availableProducts: products.length })
 
   // 从已加载的产品列表中查找产品

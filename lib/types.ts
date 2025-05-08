@@ -70,3 +70,22 @@ export interface OrderFormData {
   paymentMethod: string
   remark?: string
 }
+
+// 后端API请求类型
+export interface ItemRequest {
+  productId: string
+  quantity: number
+}
+
+export interface OrderRequest {
+  id?: string
+  address: {
+    province: string
+    city: string
+    district: string
+    address: string
+  }
+  phoneNumber: string
+  recipientName: string
+  items: ItemRequest[]
+}
